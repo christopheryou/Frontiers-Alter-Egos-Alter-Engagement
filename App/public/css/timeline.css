@@ -1,0 +1,112 @@
+/* General styling for the header */
+.header {
+    padding: 12px;
+    background-color: #f5f5f5;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Timeline container */
+.timeline {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 66.67%; /* 2/3 of the page width */
+    justify-content: space-between;
+    position: relative;
+}
+
+/* Timeline items */
+.timeline-item {
+    position: relative;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 12px; /* Smaller font size */
+    color: #777;
+    flex-grow: 1;
+    padding-bottom: 20px; /* Space for the line and circle below */
+}
+
+/* Connector line under the timeline */
+.timeline::before {
+    content: '';
+    position: absolute;
+    bottom: 12px; /* Position the line below the text */
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+    z-index: -1;
+}
+
+/* Active stage circle */
+.timeline-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 8px; /* Align the circle with the timeline line */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    background-color: #007bff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Circle for all stages (inactive) */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    bottom: 8px; /* Align circles with the timeline line */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #ddd;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Override inactive styling for active stage */
+.timeline-item.active::after {
+    background-color: #007bff; /* Blue for active stage */
+    width: 10px; /* Slightly larger circle */
+    height: 10px;
+}
+
+.timeline-item.passed {
+    font-weight: bold;
+    color: #6c9edb; /* Muted blue for passed stages */
+}
+
+/* Active stage text styling */
+.timeline-item.active {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Responsive for smaller screens */
+@media (max-width: 600px) {
+    .timeline {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timeline-item {
+        margin-bottom: 30px; /* Add spacing for vertical layout */
+    }
+
+    .timeline::before {
+        height: 2px;
+        width: 100%;
+        left: 0;
+        bottom: 0;
+    }
+
+    .timeline-item::after {
+        bottom: -8px; /* Adjust for vertical timeline */
+    }
+}

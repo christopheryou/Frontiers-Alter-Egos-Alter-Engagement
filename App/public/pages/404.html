@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #e74c3c;
+        }
+        p {
+            margin: 1rem 0;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Oops! Something went wrong.</h1>
+    <p>This study must be completed in one sitting and has a session timeout. To restart the survey, please press the link below.</p>
+    <p>
+        <a href="/" id="return-link">Return to the homepage</a>
+    </p>
+
+    <script>
+        const storedId = sessionStorage.getItem('id');
+        const storedCondition = sessionStorage.getItem('condition');
+        const returnLink = document.getElementById('return-link');
+    
+        async function fetchUserInfo() {
+            try {
+                const response = await fetch('/ReturnUserInfo');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch user info from server.');
+                }
+                const userInfo = await response.json();
+    
+                // Store retrieved data in sessionStorage
+                if (userInfo.id) {
+                    sessionStorage.setItem('id', userInfo.id);
+                }
+                if (userInfo.condition) {
+                    sessionStorage.setItem('condition', userInfo.condition);
+                }
+    
+                return userInfo;
+            } catch (error) {
+                console.error('Error fetching user info:', error);
+                return null;
+            }
+        }
+    
+        async function updateReturnLink() {
+            let id = storedId;
+            let condition = storedCondition;
+    
+            // If either `id` or `condition` is missing, fetch from server
+            if (!id || !condition) {
+                console.log('Missing session data. Fetching from server...');
+                const userInfo = await fetchUserInfo();
+                if (userInfo) {
+                    id = userInfo.id || id;
+                    condition = userInfo.condition || condition;
+                }
+            }
+    
+            // Update the return link
+            if (id) {
+                if (condition) {
+                    returnLink.href = `/${id}/${condition}`;
+                } else {
+                    returnLink.href = `/${id}`;
+                }
+            } else {
+                console.log('No session data available to update the return link.');
+            }
+        }
+    
+        // Call the function to update the return link on page load
+        updateReturnLink();
+    </script>
+    
+</body>
+</html>

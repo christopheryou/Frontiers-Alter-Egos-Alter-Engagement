@@ -1,0 +1,330 @@
+[
+    {
+        "nodeId": 1,
+        "dialogue": "I'm Alex, a virtual assistant who's here to help you talk through your mental health journey. Throughout our conversation, my goal is to prompt you with different questions to help you reflect. So, to get the ball rolling how would you like me to address you today?",
+        "input": {
+            "allowed": true,
+            "nextNode": 2
+        }
+    },
+    {
+        "nodeId": 2,
+        "dialogue": "Take a moment to think about one area of your life that’s being negatively affected by your mental health. What comes to mind? It could be something simple, like trouble sleeping, or something more complex—it’s entirely personal to you.",
+        "input": {
+            "allowed": true,
+            "nextNode": 3
+        },
+        "response": {
+            "prompt": "Greet the user based on their provided name."
+        }
+    },
+    {
+        "nodeId": 3,
+        "dialogue": "Could you tell me more about how it’s impacted you? What’s been the most difficult part for you?",
+        "input": {
+            "allowed": true,
+            "nextNode": 4
+        },
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: briefly address any concerns brought up by the user empathetically by providing simple reflections to their response."
+        }
+    },
+    {
+        "nodeId": 4,
+        "dialogue": "One activity that might help is to do a bit of self-assessment. For instance, on a scale of 1 to 10, with 1 being not managing at all and 10 being completely managing, how would you rate your current management of your own mental health?",
+        "options": [
+            {
+                "optionText": "1",
+                "nextNode": 5
+            },
+            {
+                "optionText": "2",
+                "nextNode": 5
+            },
+            {
+                "optionText": "3",
+                "nextNode": 5
+            },
+            {
+                "optionText": "4",
+                "nextNode": 5
+            },
+            {
+                "optionText": "5",
+                "nextNode": 5
+            },
+            {
+                "optionText": "6",
+                "nextNode": 5
+            },
+            {
+                "optionText": "7",
+                "nextNode": 5
+            },
+            {
+                "optionText": "8",
+                "nextNode": 5
+            },
+            {
+                "optionText": "9",
+                "nextNode": 6
+            },
+            {
+                "optionText": "10",
+                "nextNode": 6
+            }
+        ],
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: express empathy for the concerns they've listed, and use the responses to help begin developing discrepancy in their life."
+        }
+    },
+    {
+        "nodeId": 5,
+        "dialogue": "What do you feel is personally standing in your way of that score being even higher -- like a 9 or 10?",
+        "input": {
+            "allowed": false,
+            "nextNode": 7
+        }
+    },
+    {
+        "nodeId": 6,
+        "dialogue": "Out of everything going on, what aspects of your situation are you most focused on maintaining or keeping stable?",
+        "input": {
+            "allowed": false,
+            "nextNode": 7
+        }
+    },
+    {
+        "nodeId": 7,
+        "dialogue": "When you think about where you are and where you might want to be, what is the biggest positive you think you would see in making a change?",
+        "input": {
+            "allowed": true,
+            "nextNode": 8
+        },
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: roll with resistance if necessary, supporting self-autonomy, expressing positivity in the user’s score."
+        }
+    },
+    {
+        "nodeId": 8,
+        "dialogue": "Take a moment to reflect on what steps you've already taken to address your mental health—specific strategies or techniques you’ve tried. What's worked for you so far?",
+        "input": {
+            "allowed": true,
+            "nextNode": 10
+        },
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: reaffirm the user for being open, addressing any concerns that they might bring up empathically, and acknowledge the user's readiness to continue."
+        }
+    },
+    {
+        "nodeId": 10,
+        "dialogue": "What inspires you to take action when it comes to your mental health? Maybe, there's specific people or things in your life that drive you to make those steps?",
+        "input": {
+            "allowed": true,
+            "nextNode": 11
+        },
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: briefly address any concerns brought up by the user empathetically by focusing on the positives in what they've mentioned and reaffirming their self-efficacy or reflection."
+        }
+    },
+    {
+        "nodeId": 11,
+        "dialogue": "Think back to your self-reported score from 1-10. Perhaps you've noticed some things that haven't worked as well in pushing your score at a 9 or a 10. Can you share what hasn't been effective and why you feel that way?",
+        "input": {
+            "allowed": true,
+            "nextNode": 12
+        },
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: briefly address any concerns brought up by the user empathetically by providing simple reflections to their response."
+        }
+    },
+    {
+        "nodeId": 12,
+        "dialogue": "Considering the reasons you've mentioned, what’s a practical adjustment you think you could make to enhance any of the techniques to make them more effective for you?",
+        "input": {
+            "allowed": true,
+            "nextNode": 13
+        },
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: reframe what the client says to highlight a point and acknowledge both sides of the client’s ambivalence."
+        }
+    },
+    {
+        "nodeId": 13,
+        "dialogue": "If you're interested, I can share a few resources on mental wellness. Would you like to hear more or continue moving forward?",
+        "options": [
+            {
+                "optionText": "I'd like to briefly hear about other mental health techniques or resources.",
+                "nextNode": 14
+            },
+            {
+                "optionText": "I'd like to move onto the next topic of the conversation",
+                "subOptionText": "This will continue to the next topic of the conversation.",
+                "nextNode": 18
+            }
+        ],
+        "response": {
+            "prompt": "Please address the user's response based on the following properties of motivational interviews: support the user's self-efficacy and ability to accomplish their goal, and ensure autonomy is promoted."
+        },
+        "progressInterview": true
+    },
+    {
+        "nodeId": 14,
+        "dialogue": "Let’s talk about a few techniques that are commonly used to support mental health and can be particularly helpful for students. These approaches are grounded in research and can fit into your daily routine with a little bit of effort. I can go into more detail about any of them.",
+        "options": [
+            {
+                "optionText": "Physical Activity Techniques",
+                "subOptionText": "Discover how even small amounts of exercise can boost your mood and energy.",
+                "nextNode": 15
+            },
+            {
+                "optionText": "Mindfulness and Relaxation Techniques",
+                "subOptionText": "Learn about ways to reduce stress and refocus through practices like meditation, gratitude journaling, or deep breathing exercises.",
+                "nextNode": 16
+            },
+            {
+                "optionText": "Social Connection",
+                "subOptionText": "Isolation is one of the biggest problems in addressing mental health. How can your network support you?",
+                "nextNode": 17
+            },
+            {
+                "optionText": "I'd like to move onto the next topic of the conversation",
+                "subOptionText": "This will continue to the next topic of the conversation.",
+                "nextNode": 18
+            }
+        ]
+    },
+    {
+        "nodeId": 15,
+        "dialogue": "Physical activity is a proven way to boost your mood and reduce stress. Even small amounts of exercise, like a 10-minute walk, can release endorphins and help clear your mind. Activities like yoga, jogging, or even dancing in your room can have a big impact over time. The key is finding something you enjoy so that it feels sustainable. Take a look at the link to see how exercise can benefit your mental health.",
+        "url": "https://www.cdc.gov/mental-health/living-with/index.html",
+        "options": [
+            {
+                "optionText": "Mindfulness and Relaxation Techniques",
+                "subOptionText": "Learn about ways to reduce stress and refocus through practices like meditation, gratitude journaling, or deep breathing exercises.",
+                "nextNode": 16
+            },
+            {
+                "optionText": "Social Connection",
+                "subOptionText": "Isolation is one of the biggest problems in addressing mental health. How can your network support you?",
+                "nextNode": 17
+            },
+            {
+                "optionText": "I'd like to move onto the next topic of the conversation.",
+                "subOptionText": "This will continue to the next topic of the conversation.",
+                "nextNode": 18
+            }
+        ]
+    },
+    {
+        "nodeId": 16,
+        "dialogue": "Mindfulness techniques can help you manage stress and stay present. Practices like meditation, gratitude journaling, or deep breathing exercises are simple but powerful. For example, you can try a 5-4-3-2-1 grounding exercise: name five things you see, four you can touch, three you can hear, two you can smell, and one you can taste. This can be a great tool when you’re feeling overwhelmed. For more ideas on mindfulness and self-care, visit the attached link.",
+        "url": "https://www.cdc.gov/emotional-well-being/improve-your-emotional-well-being/index.html",
+        "options": [
+            {
+                "optionText": "Physical Activity Techniques",
+                "subOptionText": "Discover how even small amounts of exercise can boost your mood and energy.",
+                "nextNode": 15
+            },
+            {
+                "optionText": "Social Connection",
+                "subOptionText": "Isolation is one of the biggest problems in addressing mental health. How can your network support you?",
+                "nextNode": 17
+            },
+            {
+                "optionText": "I'd like to move onto the next topic of the conversation",
+                "subOptionText": "This will continue to the next topic of the conversation.",
+                "nextNode": 18
+            }
+        ]
+    },
+    {
+        "nodeId": 17,
+        "dialogue": "Connecting with others is an essential part of mental health. Whether it’s chatting with a friend, joining a study group, or calling a family member, these interactions provide emotional support and help combat feelings of isolation. Even small steps, like sending a quick text or scheduling a coffee break with a peer, can make a difference. For more guidance on building social connections, check out the resource link.",
+        "url": "https://www.nih.gov/health-information/social-wellness-toolkit",
+        "options": [
+            {
+                "optionText": "Physical Activity Techniques",
+                "subOptionText": "Discover how even small amounts of exercise can boost your mood and energy.",
+                "nextNode": 15
+            },
+            {
+                "optionText": "Mindfulness and Relaxation Techniques",
+                "subOptionText": "Learn about ways to reduce stress and refocus through practices like meditation, gratitude journaling, or deep breathing exercises.",
+                "nextNode": 16
+            },
+            {
+                "optionText": "I'd like to move onto the next topic of the conversation",
+                "subOptionText": "This will continue to the next topic of the conversation.",
+                "nextNode": 18
+            }
+        ]
+    },
+    {
+        "nodeId": 18,
+        "dialogue": "Thinking about everything we’ve talked about - your mental health, your coping techniques, and other resources out there - what do you feel is a next step that you can could take today? There is no wrong answer, and only you know what makes sense for yourself.",
+        "input": {
+            "allowed": true,
+            "nextNode": 23
+        }
+    },
+    {
+        "nodeId": 23,
+        "dialogue": "How confident do you feel in your ability to take steps to manage or improve your mental health moving forward from today?",
+        "options": [
+            {
+                "optionText": "1",
+                "nextNode": 24
+            },
+            {
+                "optionText": "2",
+                "nextNode": 24
+            },
+            {
+                "optionText": "3",
+                "nextNode": 24
+            },
+            {
+                "optionText": "4",
+                "nextNode": 24
+            },
+            {
+                "optionText": "5",
+                "nextNode": 24
+            },
+            {
+                "optionText": "6",
+                "nextNode": 24
+            },
+            {
+                "optionText": "7",
+                "nextNode": 24
+            },
+            {
+                "optionText": "8",
+                "nextNode": 24
+            },
+            {
+                "optionText": "9",
+                "nextNode": 24
+            },
+            {
+                "optionText": "10",
+                "nextNode": 24
+            }
+        ],
+        "response": {
+            "prompt": "Please address the user's response on goals for themselves with the following properties: promoting the goal the user chose for themselves, and promoting the user's autonomy in choosing that goal"
+        }
+    },
+    {
+        "nodeId": 24,
+        "dialogue": "Thanks again for chatting with me today. Remember, taking care of your mental well-being is an ongoing journey. No matter anyone or even another virtual assistant like me might say, you’re the one in control of the decisions that best support you. Please click the button below to complete the remainder of this study.",
+        "options": [
+            {
+                "optionText": "Continue to End",
+                "nextNode": "END"
+            }
+        ]
+    }
+]

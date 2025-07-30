@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Research Study</title>
+
+    <!-- External CSS -->
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link href="../css/timeline.css" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- Importmap for loading Three.js and other dependencies -->
+    <script type="importmap">
+        {
+            "imports": {
+              "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js/+esm",
+              "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+              "talkinghead": "../js/modules/talkinghead.mjs"
+            }
+        }
+    </script>
+
+    <!-- Module scripts for avatar and main functionality -->
+    <script type="module" src="../js/avatar.js"></script>
+    <script type="module" src="../js/introduction.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        #avatar {
+            display: block;
+            height: 100%;
+            max-height: 100%;
+            left: 0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header" id="timeline">
+        <ul class="timeline">
+            <li class="timeline-item active" data-stage="1">Introduction</li>
+            <li class="timeline-item" data-stage="2">Motivational Interview</li>
+            <li class="timeline-item" data-stage="3">Post-Survey</li>
+        </ul>
+    </div>
+    <div class="container no-form">
+        <div class="avatar">
+            <div id="loading"></div>
+            <div id="avatar"></div> <!-- Avatar will be injected here -->
+        </div>
+
+        <div class="chat">
+            <div class="name-label">Alex</div> <!-- The character's name -->
+            <div class="text-container"> <!-- New inner container to restrict text area -->
+                <div id="dialogue-text">
+                    <span class="highlight">Press start to hear the study's instructions from Alex.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form">
+            <div id="form-container"></div>
+        </div>
+
+        <div class="button">
+            <div id="options-container">
+                <button id="start-btn" style="display: none;" class="game-button">Start</button>
+            </div>
+        </div>
+
+        <div class="a-gap"></div>
+        <div class="b-gap"></div>
+        <div class="footer"></div>
+    </div>
+
+</body>
+
+</html>

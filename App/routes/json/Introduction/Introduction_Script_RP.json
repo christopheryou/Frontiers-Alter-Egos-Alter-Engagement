@@ -1,0 +1,47 @@
+[
+    {
+        "nodeId": 1,
+        "dialogue": "Hi, there. I'm a virtual character named 'Alex.' Thanks for agreeing to be apart of this mental health research study. The purpose of our study is to see the value of what a 'motivational interview' can do for users, such as yourself, who might not have access to traditional in-person mental health options. Throughout this study, you will be able to talk me through either text or through button options, like the one down below.",
+        "options": [
+            {
+                "optionText": "So, what am I supposed to do exactly?",
+                "nextNode": 2
+            }
+        ]
+    },
+    {
+        "nodeId": 2,
+        "dialogue": "Your job in this study is to help me converse with you through a guided motivational interview. You can think of a motivational interview as an open-ended conversation where the goal is to help you think through where you are in your mental health journey, what problems you'd like to address, and what you want to accomplish. A motivational interview is just meant to help you self-establish where you are and where you want to be.",
+        "options": [
+            {
+                "optionText": "Anything else I need to know?",
+                "nextNode": 3
+            }
+        ]
+    },  
+    {
+        "nodeId": 3,
+        "dialogue": "We'll talk through several conversation topics for the motivational interview; don't worry, this intervention is designed to be brief. Keep in mind that I'm only a virtual character and not at all a licensed therapist. So I'm really just here to help facilitate this conversation by prompting you to think about your own mental health. What you want to gain from this conversation is completely up to you.",
+        "options": [
+            {
+                "optionText": "Makes sense. How do I get started?",
+                "nextNode": 4
+            }
+        ]
+    },
+    {
+        "nodeId": 4,
+        "dialogue": "To start, press the little button below that says 'Start'. Once you do, we'll begin the conversation, and I'll be taking on the role of the question prompter. Keep in mind that throughout the interaction, you will be able to talk with me through different text and button responses. How does that sound?",
+        "options": [
+            {
+                "optionText": "I think I could use a refresher (this will re-explain the study).",
+                "nextNode": 1
+            },
+            {
+                "optionText": "Start",
+                "nextNode": "INTERVIEW"
+            }
+        ]
+    }
+    
+]

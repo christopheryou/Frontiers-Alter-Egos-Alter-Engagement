@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #e6e6e6;
+            /* Soft gray background */
+        }
+
+        h1 {
+            margin-top: 5vh;
+            font-size: 2.5rem;
+            /* Slightly larger title */
+            color: #333;
+            /* Darker text for better contrast */
+        }
+
+        .character-container {
+            display: flex;
+            justify-content: center;
+            gap: 10%;
+            flex-wrap: wrap;
+            margin-top: 5vh;
+        }
+
+        .character-container img {
+            width: 45vw;
+            /* Larger images */
+            max-width: 300px;
+            /* Reasonable max width */
+            height: 60vw;
+            /* Adjust height to maintain aspect ratio */
+            max-height: 400px;
+            /* Reasonable max height */
+            object-fit: cover;
+            /* Cover the container without stretching */
+            object-position: top;
+            /* Focus on the top part of the image */
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .character-container img:hover {
+            transform: scale(1.1);
+            /* Slight zoom effect */
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+            /* Shadow on hover */
+        }
+
+        footer {
+            margin-top: 5vh;
+            font-size: 1.2rem;
+            /* Larger text for footer */
+            color: #555;
+            /* Subtle gray text */
+            padding: 2rem;
+            /* Padding for better readability */
+        }
+
+        footer p {
+            font-size: 1.3rem;
+            /* Larger paragraph text */
+            line-height: 1.6;
+            /* Improved line spacing for readability */
+            color: #444;
+            /* Slightly darker gray for text */
+            max-width: 800px;
+            /* Limit paragraph width for better readability */
+            margin: 0 auto;
+            /* Center the text within the page */
+        }
+    </style>
+    <link href="../css/timeline.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+    <div class="header" id="timeline">
+        <ul class="timeline">
+            <li class="timeline-item active" data-stage="1">Introduction</li>
+            <li class="timeline-item" data-stage="2">Motivational Interview</li>
+            <li class="timeline-item" data-stage="3">Post-Survey</li>
+        </ul>
+    </div>
+    <h1>Virtual Motivational Interview (IRB#ET00043454)</h1>
+
+    <div class="character-container">
+        <img src="/images/female.jpeg" alt="Female Character" onclick="selectCharacter('female')">
+        <img src="/images/male.jpeg" alt="Male Character" onclick="selectCharacter('male')">
+    </div>
+    <footer>
+        <p>In this study, we're asking you to participate in a motivational interview with a virtual character. To
+            start, select
+            the character you'd prefer to interact with, and further instructions will be presented on the next page.
+            The interaction
+            will be the same no matter which character you pick.</p>
+    </footer>
+
+    <script>
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Extract `id` and `condition` from the URL
+            sessionStorage.clear();
+            const urlParts = window.location.pathname.split('/');
+            const userId = urlParts[1]; // Assuming the ID is the first segment
+            const condition = urlParts[2]; // Assuming the condition is the second segment
+            const personIntakeItem = document.querySelector('[data-stage="2"]');
+            // Store `id` and `condition` in sessionStorage
+            if (userId) {
+                sessionStorage.setItem('id', userId);
+                console.log('User ID stored in sessionStorage:', userId);
+            }
+
+            if (condition) {
+                sessionStorage.setItem('condition', condition.toLowerCase());
+                console.log('Condition stored in sessionStorage:', condition.toLowerCase());
+            }
+
+            // Get all timeline items
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            // Check condition and update stage 2
+            if (condition.toLowerCase() === "rp") {
+                if (personIntakeItem) {
+                    personIntakeItem.textContent = "Persona Crafting"; // Change label to Persona Crafting
+                }
+            }
+            // Check if condition is not 'VH' or 'RP'
+            if (condition.toLowerCase() === "base") {
+                // Remove Person Intake (data-stage="2") and the last stage (data-stage="4")
+                timelineItems.forEach(item => {
+                    const stage = item.getAttribute('data-stage');
+                    if (stage === "2") {
+                        item.remove();
+                    }
+                });
+
+            }
+        });
+
+
+        function selectCharacter(characterType) {
+            console.log("Character selected:", characterType); // Debug log
+
+            const payload = { type: characterType };
+            sessionStorage.setItem('type', characterType);
+
+            fetch('/Introduction', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Redirecting to Introduction.html'); // Debug log
+                        window.location.href = '/Introduction';
+                    } else {
+                        console.error('Failed to start study:', response.statusText);
+                        alert('Failed to start study. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        }
+
+    </script>
+</body>
+
+</html>

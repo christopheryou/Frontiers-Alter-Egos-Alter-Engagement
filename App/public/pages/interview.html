@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Research Study</title>
+
+    <!-- External CSS -->
+    <link href="../css/index.css" rel="stylesheet" type="text/css">
+    <link href="../css/trials.css" rel="stylesheet" type="text/css">
+    <link href="../css/timeline.css" rel="stylesheet" type="text/css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- Importmap for loading Three.js and other dependencies -->
+    <script type="importmap">
+        {
+            "imports": {
+              "three": "https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js/+esm",
+              "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.161.0/examples/jsm/",
+              "talkinghead": "../js/modules/talkinghead.mjs"
+            }
+        }
+    </script>
+
+    <!-- Module scripts for avatar and main functionality -->
+    <script type="module" src="../js/avatar.js"></script>
+    <script type="module" src="../js/index.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        #avatar {
+            display: block;
+            height: 100%;
+            max-height: 100%;
+            left: 0;
+            right: 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="header" id="timeline">
+        <ul class="timeline">
+            <li class="timeline-item passed" data-stage="1">Introduction</li>
+            <li class="timeline-item active" data-stage="2">Motivational Interview</li>
+            <li class="timeline-item" data-stage="3">Post-Survey</li>
+        </ul>
+    </div>
+    <div class="container no-form">
+        
+        <div class="header">
+            <div style = "text-align: center;">
+                <p id = "skip-text" style= "display: none;">Response stuck loading? Wait 15 seconds and click this button to skip to the next response. This may slightly glitch the next response; but will not change the remaining intervention.</p>
+                <button id="skip-button" style="display: none; margin: 0 auto;" class="skip-button">Skip</button>
+            </div>
+        </div>
+
+        <div class="avatar">
+            <div id="loading"></div>
+            <div id="avatar"></div> <!-- Avatar will be injected here -->
+        </div>
+
+        <div class="chat">
+            <div class="name-label">Alex</div> <!-- The character's name -->
+            <div class="text-container"> <!-- New inner container to restrict text area -->
+                <div id="dialogue-text">
+                    <span class="highlight">You ready to start the motivational interview. Press the 'Start' button
+                        below to begin.</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="form" class="form">
+            <div id="form-container"></div>
+        </div>
+
+        <div class="button">
+            <div id="options-container">
+                <button id="start-btn" style="display: none;" class="game-button">Start</button>
+            </div>
+        </div>
+
+        <div class="a-gap"></div>
+        <div class="b-gap">
+        </div>
+        <div class="footer">App not working? Contact christopheryou@ufl.edu with a screenshot of your error.</div>
+    </div>
+
+
+    <!-- Modal Structure for Clinical Trials Carousel -->
+    <div id="trialModal" class="modal-trials">
+        <div class="modal-content-trials">
+            <span class="close-button" id="closeModal">&times;</span>
+            <div class="carousel">
+                <div class="arrow" id="leftArrow">&#10094;</div>
+                <div class="carousel-content" id="carouselContent">
+                    <!-- This area is initially empty, will be populated by JavaScript -->
+                </div>
+                <div class="arrow" id="rightArrow">&#10095;</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Modal Structure -->
+    <div id="infoModal" class="modal-trials">
+        <div class="modal-content-trials">
+            <span class="close-button" id="closeInfoModal">&times;</span>
+            <div id="infoModalContent">
+                <!-- Title -->
+                <h2>Chat with Alex: Important Information</h2>
+                <!-- Warning Box -->
+                <div class="info-box warning-box">
+                    <p><strong>⚠️ Note:</strong> Alex might need a few moments to process your responses. We appreciate
+                        your patience <span style="font-size: 1.2em;">😊</span></p>
+                </div>
+
+                <!-- Instruction Box -->
+                <div class="info-box">
+                    <p><strong>📝 Instruction:</strong> After reading this information guide, you can start your
+                        conversation with Alex by <i>closing out of this modal</i>, and simply click the <i>"Start
+                            Chat"</i> button located at the center of your screen.</p>
+                    <br>
+                    <p>To interact, please type and <i>"Send"</i> your response. Alternatively, some questions may also
+                        have multiple choice options or select multiple options. Please feel free to use these options
+                        as needed or required.</p>
+                </div>
+
+                <!-- Question Format Info Box -->
+                <div class="info-box">
+                    <p><strong>🛠️ Question Format:</strong> Most of your responses will require you to type in the text
+                        box below. Additionally, some questions may require you to choose a single option, while others
+                        may ask you to select multiple responses before clicking the <i>"Send"</i> button.</p>
+                </div>
+
+
+                <!-- Privacy Notice Box -->
+                <div class="info-box">
+                    <p><strong>🔒 Privacy:</strong> Your responses are confidential and will only be accessible to our
+                        research team. They will not be shared externally or linked to your identity.</p>
+                </div>
+
+                <!-- Contact Information Box -->
+                <div class="info-box">
+                    <p><strong>📧 Contact:</strong> If you encounter any issues or have questions, please reach out to
+                        our research team at <a href="mailto:christopheryou@ufl.edu">christopheryou@ufl.edu</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
